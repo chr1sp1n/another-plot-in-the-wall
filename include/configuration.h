@@ -30,6 +30,6 @@
 	#define HALF_STEPS					true
 
 	#define STEPS_PER_REVOLUTION 2048
-	#define STEPS_PER_MM (STEPS_PER_REVOLUTION / ((2 * 3.14) * 9.5)) // STEPS_PER_MM = Steps per revolution * circumference
+	#define STEPS_PER_MM (STEPS_PER_REVOLUTION / ((2 * 3.14) * 10 )) // STEPS_PER_MM = Steps per revolution * circumference
 //
 
