@@ -1,0 +1,42 @@
+{
+	"path":{
+		"temp": "./.tmp",
+		"dev": 	"./libraries",
+		"dist": "./libraries"
+	},
+	"assets":{
+    "path": "./src",
+    "libraries": ""
+	},
+	"css":{
+    "src": "./src/libraries",
+		"sass":{
+			"exclude": []
+		}
+	},
+	"js":{
+    "src": 	"./src/libraries",
+    "libraries": {
+      "jquery": [
+        "./node_modules/jquery/dist/jquery.min.js"
+      ]
+    },
+		"babel":{
+			"config":{
+				"presets": [
+					"@babel/env", {}
+				]
+			},
+			"exclude": [
+        "jquery/**/*.js"
+      ]
+		}
+  },
+	"browser":{
+		"sync": true,
+		"config": {
+			"browser": "google chrome",
+      "reloadDebounce": 5000
+		}
+	}
+}

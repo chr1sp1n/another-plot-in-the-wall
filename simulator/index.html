@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>another plot in the wall</title>
+	<link href="libraries/main/css/styles.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<main>
+		<div class="settings">
+			<div class="row">
+				<div class="col half">
+					<div class="input">
+						<label>Wall width</label>
+						<input type="number" name="x" value="100">
+					</div>
+				</div>
+				<div class="col half">
+					<div class="input">
+						<label>Wall height</label>
+						<input type="number" name="y" value="100">
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<div class="input">
+						<label>Coordinates</label>
+						<textarea name="coordinates"></textarea>
+					</div>
+				</div>
+			</div>
+			<!-- <button type="button" name="start">DRAW</button> -->
+		</div>
+		<div>
+			<div id="wall">
+				<div id="point">
+					<span></span>
+				</div>
+			</div>
+		</div>
+	</main>
+	<script src="libraries/jquery/js/jquery.min.js"></script>
+	<script src="libraries/main/js/Mover.js"></script>
+	<script src="libraries/main/js/main.js"></script>
+</body>
+</html>
