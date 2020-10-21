@@ -1,1 +1,3 @@
 node_modules
+/simulator/libraries
+/simulator/.tmp
