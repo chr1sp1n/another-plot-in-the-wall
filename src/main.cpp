@@ -12,6 +12,7 @@ gcode Commands;
 long millimeters = 100;
 int dirLeft = -1;
 int dirRight = -1;
+
 void setup() {
 	pinMode(LED_BUILTIN, OUTPUT);
 	irrecv.enableIRIn();
