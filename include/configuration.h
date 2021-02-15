@@ -11,8 +11,8 @@
 
 // SERVO
 	#define SERVO_PIN           2
-	#define PEN_UP              130
-	#define PEN_DOWN            108
+	#define PEN_UP              100
+	#define PEN_DOWN            75
 	#define USE_SMOOTH_SERVO
 //
 

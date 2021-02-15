@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include <configuration.h>
 #include <Stepper.h>
+#include <Servo.h>
 #include <IRremote.h>
 #include <gcode.h>
 
@@ -8,10 +9,12 @@ Stepper stepperLeft(LEFT_STEP_PIN_1, LEFT_STEP_PIN_2, LEFT_STEP_PIN_3, LEFT_STEP
 Stepper stepperRight(RIGHT_STEP_PIN_1, RIGHT_STEP_PIN_2, RIGHT_STEP_PIN_3, RIGHT_STEP_PIN_4, STEPS_PER_REVOLUTION, 13, HALF_STEPS);
 IRrecv irrecv(IR_RECEIVER);
 gcode Commands;
+Servo servo;
 
 long millimeters = 100;
 int dirLeft = -1;
 int dirRight = -1;
+int servoOn = 0;
 
 void setup() {
 	pinMode(LED_BUILTIN, OUTPUT);
@@ -19,13 +22,16 @@ void setup() {
 	Serial.begin(9600);
 	stepperLeft.setStepsPerMillimeter(STEPS_PER_MM);
 	stepperRight.setStepsPerMillimeter(STEPS_PER_MM);
+	servo.attach(SERVO_PIN);
 }
 
 void loop() {
 
 	if(Commands.available()){
+
     double left = 0;
 		double right = 0;
+
     if(Commands.availableValue('L') && Commands.availableValue('R')) {
 			left = Commands.GetValue('L');
 			right = Commands.GetValue('R');
@@ -52,8 +58,19 @@ void loop() {
 			Commands.comment("MOVE (left, right): "+String(left)+","+String(right));
 		}
 
+		if(Commands.availableValue('Q')) {
+			servoOn = servoOn == 1 ? 0 : 1;
+			Commands.comment("WRITE: " + String(servoOn ? "ON": "OFF"));
+			if(servoOn){
+				servo.write(PEN_DOWN);
+			}else{
+				servo.write(PEN_UP);
+			}
+		}
+
 		if(left != 0) stepperLeft.setMillimeters(left);
 		if(right != 0) stepperRight.setMillimeters(right);
+
 	}
 
 	stepperLeft.run();
